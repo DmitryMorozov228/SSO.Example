@@ -1,0 +1,15 @@
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\bin\Debug\netcoreapp2.2\certificate.pfx
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\bin\Debug\netcoreapp2.2\SSO.Example.deps.json
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\bin\Debug\netcoreapp2.2\SSO.Example.runtimeconfig.json
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\bin\Debug\netcoreapp2.2\SSO.Example.runtimeconfig.dev.json
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\bin\Debug\netcoreapp2.2\SSO.Example.dll
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\obj\Debug\netcoreapp2.2\SSO.Example.csproj.CoreCompileInputs.cache
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\obj\Debug\netcoreapp2.2\SSO.Example.RazorAssemblyInfo.cache
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\obj\Debug\netcoreapp2.2\SSO.Example.RazorAssemblyInfo.cs
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\obj\Debug\netcoreapp2.2\SSO.Example.AssemblyInfoInputs.cache
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\obj\Debug\netcoreapp2.2\SSO.Example.AssemblyInfo.cs
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\obj\Debug\netcoreapp2.2\SSO.Example.RazorTargetAssemblyInfo.cache
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\bin\Debug\netcoreapp2.2\SSO.Example.pdb
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\obj\Debug\netcoreapp2.2\SSO.Example.dll
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\obj\Debug\netcoreapp2.2\SSO.Example.pdb
+C:\Users\dmorozov\source\repos\SSO.Example\SSO.Example\obj\Debug\netcoreapp2.2\SSO.Example.csprojAssemblyReference.cache
