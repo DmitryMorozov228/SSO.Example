@@ -33,33 +33,33 @@ namespace SSO.Example
                 })
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
-                    options.Authority = Configuration["Auth0:AuthorityUrl"];
                     options.RequireHttpsMetadata = false;
-                    options.Audience = "https://dev-tfw0kkbs.auth0.com/api/v2/";
+                    options.Authority = Configuration[ConfigurationSettings.OpenIdConnectAuthority];
+                    options.Audience = Configuration[ConfigurationSettings.OpenIdConnectAudience];
                 })
-                .AddOpenIdConnect("Auth0", options =>
+                .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
                 {
-                    options.SaveTokens = true;
                     // Set the authority to your Auth0 domain
-                    options.Authority = Configuration["Auth0:AuthorityUrl"];
-
+                    options.Authority = Configuration[ConfigurationSettings.OpenIdConnectAuthority];
                     // Configure the Auth0 Client ID and Client Secret
-                    options.ClientId = Configuration["Auth0:ClientId"];
-                    options.ClientSecret = Configuration["Auth0:ClientSecret"];
+                    options.ClientId = Configuration[ConfigurationSettings.OpenIdConnectClientId];
+                    options.ClientSecret = Configuration[ConfigurationSettings.OpenIdConnectClientSecret];
+                    
+                    // Set response type to code
+                    options.ResponseType = "code";
 
                     // Configure the scope
                     options.Scope.Clear();
                     options.Scope.Add("openid");
+                    options.Scope.Add("profile");
 
-                    // Set the callback path, so Auth0 will call back to http://localhost:6102/callback
-                    // Also ensure that you have added the URL as an Allowed Callback URL in your Auth0 dashboard
                     options.CallbackPath = new PathString("/callback");
-                    options.ClaimsIssuer = "Auth0";
+                    options.ClaimsIssuer = OpenIdConnectDefaults.AuthenticationScheme;
                     options.Events = new OpenIdConnectEvents
                     {
                         OnRedirectToIdentityProvider = context =>
                         {
-                            context.ProtocolMessage.SetParameter("audience", "https://dev-tfw0kkbs.auth0.com/api/v2/");
+                            context.ProtocolMessage.SetParameter("audience", Configuration[ConfigurationSettings.OpenIdConnectAudience]);
                             return Task.FromResult(0);
                         },
                     };

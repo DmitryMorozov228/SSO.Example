@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+﻿using System;
+using System.Threading.Tasks;
+using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace SSO.Example.Controllers
 {
@@ -13,6 +15,13 @@ namespace SSO.Example.Controllers
         private const string PublicMessageData = "This is public data";
         private const string PrivateMessageData = "This is private data";
 
+        private readonly IConfiguration _configuration;
+
+        public AuthorizationController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         [HttpGet]
         [Route("public")]
         public ActionResult<string> GetPublicData()
@@ -22,10 +31,18 @@ namespace SSO.Example.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<string> LoginAsync()
+        public async Task<AccessTokenResponse> LoginAsync()
         {
-            await HttpContext.ChallengeAsync("Auth0");
-            return await HttpContext.GetTokenAsync("access_token");
+            var client = new AuthenticationApiClient(new Uri(_configuration[ConfigurationSettings.OpenIdConnectAuthority]));
+
+            var token = await client.GetTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Audience = _configuration[ConfigurationSettings.OpenIdConnectAudience],
+                ClientId = _configuration[ConfigurationSettings.OpenIdConnectClientId],
+                ClientSecret = _configuration[ConfigurationSettings.OpenIdConnectClientSecret]
+            });
+
+            return token;
         }
         
         [HttpGet]
